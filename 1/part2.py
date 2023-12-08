@@ -14,7 +14,7 @@ valid_digits_as_text = valid_digits.keys()
 
 running_total = 0
 
-with open("../input.txt") as f:
+with open("input.txt") as f:
     for line in f:
 
         first_digit = ''

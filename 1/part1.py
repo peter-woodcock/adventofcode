@@ -1,4 +1,4 @@
-with open("../input.txt") as f:
+with open("input.txt") as f:
     running_total = 0
     for line in f:
         numeric_characters = [chr for chr in line if chr.isnumeric()]
