@@ -1,10 +1,17 @@
 import re
 
-number_of_cubes = {
+maximum_number_of_cubes = {
     "red": 12,
     "green": 13,
     "blue": 14
 }
+
+
+def given_cubes_greater_than_possible(colour: str):
+    given_cubes = re.search(f"([0-9]+) {colour}", round)
+    if given_cubes:
+        return int(given_cubes.group(1)) > maximum_number_of_cubes[colour]
+
 
 running_total = 0
 
@@ -15,21 +22,8 @@ with open("input.txt", newline="\n") as f:
 
         rounds = line[8:].split(";")
         for round in rounds:
-            blue_cubes = re.search("([0-9]+) blue", round)
-            if blue_cubes:
-                if int(blue_cubes.group(1)) > number_of_cubes["blue"]:
-                    game_possible = False
-                    break
-
-            red_cubes = re.search("([0-9]+) red", round)
-            if red_cubes:
-                if int(red_cubes.group(1)) > number_of_cubes["red"]:
-                    game_possible = False
-                    break
-
-            green_cubes = re.search("([0-9]+) green", round)
-            if green_cubes:
-                if int(green_cubes.group(1)) > number_of_cubes["green"]:
+            for colour in maximum_number_of_cubes.keys():
+                if given_cubes_greater_than_possible(colour):
                     game_possible = False
                     break
 
