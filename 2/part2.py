@@ -2,7 +2,16 @@ import re
 
 running_total = 0
 
-with open("input.txt", newline="\n") as f:
+
+def return_highest_count_of_cube_colour(colour: str, highest_count: int) -> int:
+    given_cubes = re.search(f"([0-9]+) {colour}", round)
+    if given_cubes:
+        return highest_count if highest_count > int(given_cubes.group(1)) else int(given_cubes.group(1))
+    else:
+        return highest_count
+
+
+with open("test_input.txt", newline="\n") as f:
     for line in f:
         highest_red = 0
         highest_blue = 0
@@ -10,17 +19,9 @@ with open("input.txt", newline="\n") as f:
 
         rounds = line[8:].split(";")
         for round in rounds:
-            blue_cubes = re.search("([0-9]+) blue", round)
-            if blue_cubes and int(blue_cubes.group(1)) > highest_blue:
-                highest_blue = int(blue_cubes.group(1))
-
-            red_cubes = re.search("([0-9]+) red", round)
-            if red_cubes and int(red_cubes.group(1)) > highest_red:
-                highest_red = int(red_cubes.group(1))
-
-            green_cubes = re.search("([0-9]+) green", round)
-            if green_cubes and int(green_cubes.group(1)) > highest_green:
-                highest_green = int(green_cubes.group(1))
+            highest_red = return_highest_count_of_cube_colour("red", highest_red)
+            highest_blue = return_highest_count_of_cube_colour("blue", highest_blue)
+            highest_green = return_highest_count_of_cube_colour("green", highest_green)
 
         running_total += highest_red * highest_blue * highest_green
 
