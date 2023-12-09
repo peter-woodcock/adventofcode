@@ -1,5 +1,6 @@
 from typing import Literal
 
+
 def find_digit(line: str, digit_position: Literal['first', 'last']) -> str:
     valid_digits = {
         "one": "1",
@@ -14,8 +15,6 @@ def find_digit(line: str, digit_position: Literal['first', 'last']) -> str:
     }
 
     valid_digits_as_text = valid_digits.keys()
-
-    digit = ''
     non_numeric_characters = ''
 
     if digit_position == 'last':
