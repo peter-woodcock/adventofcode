@@ -14,7 +14,6 @@ def find_digit(line: str, digit_position: Literal['first', 'last']) -> str:
         "nine": "9"
     }
 
-    valid_digits_as_text = valid_digits.keys()
     non_numeric_characters = ''
 
     if digit_position == 'last':
@@ -30,7 +29,7 @@ def find_digit(line: str, digit_position: Literal['first', 'last']) -> str:
         else:
             non_numeric_characters += chr
 
-        for valid_digit in valid_digits_as_text:
+        for valid_digit in valid_digits:
             if valid_digit in non_numeric_characters:
                 return valid_digits[valid_digit]
 
