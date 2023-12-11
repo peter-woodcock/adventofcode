@@ -8,10 +8,10 @@ with open("input.txt") as f:
                            in zip(parse_numeric_values(contents[0]), parse_numeric_values(contents[1]))}
 
     running_total = 1
-    for time in times_and_distances:
+    for time, distance in times_and_distances.items():
         viable_time_count = 0
         for i in range(1, int(time)):
-            if i * (int(time) - i) > times_and_distances[time]:
+            if i * (int(time) - i) > distance:
                 viable_time_count += 1
         running_total *= viable_time_count
 
