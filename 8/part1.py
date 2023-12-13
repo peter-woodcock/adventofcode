@@ -13,7 +13,7 @@ with open("input.txt") as f:
     number_of_steps = 0
     direction_index = 0
 
-    while current_node != 'ZZZ':
+    while current_node != target_node:
         if direction_index == len(directions):
             direction_index = 0
         direction = directions[direction_index]
