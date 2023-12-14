@@ -8,15 +8,13 @@ with open("test_input_1.txt") as f:
     number_of_steps = 0
     directions_index = 0
     current_node = 'AAA'
+
     while current_node != 'ZZZ':
         if directions_index == len(directions):
             directions_index = 0
 
         direction = directions[directions_index]
-        if direction == 'L':
-            current_node = node_map_as_dict[current_node][0]
-        if direction == 'R':
-            current_node = node_map_as_dict[current_node][1]
+        current_node = node_map_as_dict[current_node][0] if direction == 'L' else node_map_as_dict[current_node][1]
 
         directions_index += 1
         number_of_steps += 1
